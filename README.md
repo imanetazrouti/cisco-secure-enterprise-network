@@ -72,7 +72,7 @@ Les services applicatifs essentiels de l'entreprise ont été centralisés sur d
 
 ## 📂 Contenu du Dépôt
 
-*   `Projet Réseau.pkt` : Le fichier de simulation Cisco Packet Tracer (prêt à être exécuté).
+*   `MonProjetRéseau.pkt` : Le fichier de simulation Cisco Packet Tracer (prêt à être exécuté).
 *   `topologie.png` : Capture d'écran du schéma de la topologie réseau.
 *   `/configs` : Dossier contenant les sauvegardes textuelles des configurations (`running-config`) des routeurs, du commutateur de niveau 3 et du pare-feu ASA.
 
