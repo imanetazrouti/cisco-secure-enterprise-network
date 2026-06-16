@@ -81,6 +81,7 @@ Les services applicatifs essentiels de l'entreprise ont été centralisés sur d
 2. Ouvrir le fichier `Projet Réseau.pkt`.
 3. Lancer des tests de connectivité (Ping / Traceroute) entre la Succursale et le Siège Social pour valider le routage BGP.
 4. Tenter d'accéder au serveur Web (`10.1.1.98`) depuis un PC client pour vérifier les politiques d'accès de la DMZ.
+   
    ---
 
 ## 🔍 Perspectives & Évolutions Sécurité
