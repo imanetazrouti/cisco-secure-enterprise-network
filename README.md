@@ -81,3 +81,11 @@ Les services applicatifs essentiels de l'entreprise ont été centralisés sur d
 2. Ouvrir le fichier `Projet Réseau.pkt`.
 3. Lancer des tests de connectivité (Ping / Traceroute) entre la Succursale et le Siège Social pour valider le routage BGP.
 4. Tenter d'accéder au serveur Web (`10.1.1.98`) depuis un PC client pour vérifier les politiques d'accès de la DMZ.
+   ---
+
+## 🔍 Perspectives & Évolutions Sécurité
+
+L'objectif principal de ce lab était de valider la connectivité globale, le routage BGP et l'intégration des services. Dans le cadre d'un durcissement (*hardening*) futur de l'infrastructure, les axes d'amélioration suivants ont été identifiés :
+* **Cloisonnement de la DMZ :** Restreindre les flux sortants des serveurs pour bloquer toute initiation de connexion vers la zone *Inside* (principe du moindre privilège)[cite: 1].
+* **Filtrage Outside :** Affiner les règles d'accès de l'interface externe pour n'exposer que les ports strictement nécessaires (comme le HTTP/HTTPS pour le serveur Web)[cite: 1].
+   
