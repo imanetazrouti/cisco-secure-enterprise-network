@@ -1,0 +1,89 @@
+ASA Version 9.6(1)
+!
+hostname ciscoasa
+names
+!
+interface GigabitEthernet1/1
+ nameif inside
+ security-level 100
+ ip address 10.1.254.2 255.255.255.252
+!
+interface GigabitEthernet1/2
+ nameif dmz
+ security-level 50
+ ip address 10.1.1.97 255.255.255.240
+!
+interface GigabitEthernet1/3
+ nameif outside
+ security-level 0
+ ip address 10.1.255.1 255.255.255.252
+!
+interface GigabitEthernet1/4
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/5
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/6
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/7
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/8
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+interface Management1/1
+ management-only
+ no nameif
+ no security-level
+ no ip address
+ shutdown
+!
+!
+route inside 10.1.0.0 255.255.255.128 10.1.254.1 1
+route inside 10.1.0.128 255.255.255.128 10.1.254.1 1
+route inside 10.1.1.0 255.255.255.192 10.1.254.1 1
+route inside 10.1.1.64 255.255.255.224 10.1.254.1 1
+route outside 10.2.0.0 255.255.255.0 10.1.255.2 1
+route inside 10.1.1.128 255.255.255.128 10.1.254.1 1
+!
+access-list DMZ_IN extended permit ip 10.1.1.96 255.255.255.240 any
+access-list OUTSIDE_IN extended permit ip 10.2.0.0 255.255.255.0 any
+access-list INSIDE_IN extended permit ip 10.1.1.128 255.255.255.128 any
+access-list INSIDE-IN extended permit ip 10.1.1.128 255.255.255.128 any
+!
+!
+access-group DMZ_IN in interface dmz
+access-group OUTSIDE_IN in interface outside
+!
+!
+class-map inspection_default
+ match default-inspection-traffic
+!
+policy-map type inspect dns preset_dns_map
+ parameters
+  message-length maximum 512
+policy-map global_policy
+ class inspection_default
+  inspect dns preset_dns_map
+  inspect ftp 
+  inspect icmp 
+  inspect tftp 
+!
+service-policy global_policy global
